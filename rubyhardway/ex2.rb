@@ -1,0 +1,9 @@
+# A comment, this so you can read your program later.
+# Anything after the # is ignored by ruby.
+
+puts "I could have code like this." # and the cocmment after it ignored
+
+# You can also use a comment to "disable" or comment out a piece of ccodeL
+# puts "This won't run."
+
+puts "This will run."
