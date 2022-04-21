@@ -4,13 +4,13 @@ class GoodDog
 
   def initialize(n, h, w)
     self.name   = n
-    self.height   = h
+    self.height = h
     self.weight = w
   end
 
   def change_info(n, h, w)
     self.name   = n
-    self.height   = h
+    self.height = h
     self.weight = w
   end
 
