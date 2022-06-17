@@ -17,6 +17,15 @@ for (let index = digits.length -1; index >= 0; index--) {
         }
         digits[index - 1] += 1 
         continue; 
+    }
+    if (digits[index] === 10) {
+        digits[index] = 0
+        if (!digits[index - 1]) {
+            digits.unshift(1)
+            break;
+        }
+        digits[index - 1] += 1 
+        continue; 
     }    
     digits[index]++
     if (digits[index] === 10) {
