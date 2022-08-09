@@ -41,21 +41,30 @@ It is guaranteed that the list represents a number that does not have leading ze
 }
 var addTwoNumbers = function(l1, l2) {
     const l3 = new ListNode();
+    const currl3 = l3;
+    const currl1 = l1;
+    const currl2 = l2;
 
-
-    while (l1 !== null || l2 !== null ) {
+    while (currl1.val !== null || currl2.val !== null ) {
         
-        if (!l3.val) {l3.val = 0};
-        if (!l1.val) {l1.val = 0};
-        if (!l2.val) {l2.val = 0};
+        if (!currl3.val) {currl3.val = 0};
+        if (!currl1.val) {currl1.val = 0};
+        if (!currl2.val) {currl2.val = 0};
 
-        l3.val = l1.val + l2.val + l3.val;
-        if (l3.val > 9) {l3.val = l3.val - 10; l3.next = 1}
-
+        currl3.val = currl1.val + currl2.val + currl3.val;
+    console.log(currl3)
+        
+        if (currl3.val > 9) {
+            currl3.val = currl3.val - 10;
+            currl3.next = new ListNode()
+            currl3.next = 1}
+    console.log(currl3)
+        currl1.val = currl1.next
+        currl2.val = currl2.next
+        currl3.next = new ListNode();
+        currl3 = currl3.next;
 
     }
-
-    
     return l3;
 };
 const l1 = 
