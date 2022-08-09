@@ -32,11 +32,11 @@ Only one valid answer exists.
 var twoSum = function(nums, target) {
   
     for (let i = 0; i < nums.length; i++) {
-        const sum = 0;
+        var sum = 0;
         for (let j = i; j < nums.length; j++) {
             sum = nums[i] + nums[j + 1];
             if (sum === target) {
-                return [i, i+1]
+                return [i, j+1]
             }
             
         }
