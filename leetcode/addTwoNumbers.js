@@ -40,19 +40,30 @@ It is guaranteed that the list represents a number that does not have leading ze
     this.next = (next===undefined ? null : next)
 }
 var addTwoNumbers = function(l1, l2) {
-    var lBig = 0;
-    l1.length > l2.length ? lBig = l1.length: lBig = l2.length;
-    var l3 = [];
-    for (let i = 0; i < lBig; i++) {
-        if (!l3[i]) {l3[i] = 0};
-        if (!l1[i]) {l1[i] = 0};
-        if (!l2[i]) {l2[i] = 0};
+    const l3 = new ListNode();
 
-        l3[i] = l1[i] + l2[i] + l3[i];
-        if (l3[i] > 9) {l3[i] = l3[i] - 10; l3[i + 1] = 1}
+
+    while (l1 !== null || l2 !== null ) {
+        
+        if (!l3.val) {l3.val = 0};
+        if (!l1.val) {l1.val = 0};
+        if (!l2.val) {l2.val = 0};
+
+        l3.val = l1.val + l2.val + l3.val;
+        if (l3.val > 9) {l3.val = l3.val - 10; l3.next = 1}
+
+
     }
+
     
     return l3;
 };
-
+const l1 = 
+[2,4,3]
+// [0]
+// [9,9,9,9,9,9,9]
+const l2 = 
+[5,6,4]
+// [0]
+// [9,9,9,9]
 console.log(addTwoNumbers(l1, l2))
