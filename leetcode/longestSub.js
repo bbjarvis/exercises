@@ -29,14 +29,20 @@ let s = ['abcabcbb', 'bbbbb', 'pwwkew', '']
 var lengthOfLongestSubstring = function (s) {
   let count = 1
   let longCount = 1
-  for (let i = 0; i < s.length; i++) {
-    for (let j = 0; j < s.length; j++) {
-      if (s[i] === s[j]) {
-        count++
-      } else {
-        if (count > longCount) longCount = count
-        else {
+  if (s.length === 0) longCount = 0
+  else {
+    for (let i = 0; i < s.length; i++) {
+      for (let j = 0; j < s.length; j++) {
+        console.log(s[i], s[j], count, longCount)
+        if (s[i] === s[j]) {
           count = 1
+          break
+        } else {
+          count++
+          if (count > longCount) longCount = count
+          else {
+            count = 1
+          }
         }
       }
     }
