@@ -24,7 +24,7 @@
 // 0 <= s.length <= 5 * 104
 // s consists of English letters, digits, symbols and spaces.
 
-let s = ['abcabcbb', 'bbbbb', 'pwwkew']
+let s = ['abcabcbb', 'bbbbb', 'pwwkew', '']
 
 var lengthOfLongestSubstring = function (s) {
   let count = 1
