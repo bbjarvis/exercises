@@ -28,7 +28,7 @@ let s = ['abcabcbb', 'bbbbb', 'pwwkew']
 
 var lengthOfLongestSubstring = function (s) {
   let count = 1
-  let longCount = 0
+  let longCount = 1
   for (let i = 0; i < s.length; i++) {
     for (let j = 0; j < s.length; j++) {
       if (s[i] === s[j]) {
@@ -41,6 +41,6 @@ var lengthOfLongestSubstring = function (s) {
       }
     }
   }
-  return count
+  return longCount
 }
 for (let i = 0; i < s.length; i++) console.log(lengthOfLongestSubstring(s[i]))
