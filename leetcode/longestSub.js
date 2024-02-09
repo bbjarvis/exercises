@@ -24,19 +24,23 @@
 // 0 <= s.length <= 5 * 104
 // s consists of English letters, digits, symbols and spaces.
 
-let s = 'abcabcbb'
+let s = ['abcabcbb', 'bbbbb', 'pwwkew']
+
 var lengthOfLongestSubstring = function (s) {
   let count = 1
+  let longCount = 0
   for (let i = 0; i < s.length; i++) {
     for (let j = 0; j < s.length; j++) {
       if (s[i] === s[j]) {
         count++
       } else {
-        count = 1
+        if (count > longCount) longCount = count
+        else {
+          count = 1
+        }
       }
     }
   }
   return count
 }
-
-console.log(lengthOfLongestSubstring(s))
+for (let i = 0; i < s.length; i++) console.log(lengthOfLongestSubstring(s[i]))
