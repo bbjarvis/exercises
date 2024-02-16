@@ -36,14 +36,11 @@ var lengthOfLongestSubstring = function (s) {
       let skipToNext = false
       for (let j = i + 1; j < s.length; j++) {
         if (skipToNext) break
-        // console.log(s[i], s[j])
         if (s[i] === s[j]) {
           if (count > longCount) longCount = count
-          // console.log('break', count, longCount)
           break
         } else {
           for (let index = j - 1; index > i; index--) {
-            // console.log('index', index, j, i)
             if (s[index] === s[j]) {
               skipToNext = true
               break
@@ -52,8 +49,6 @@ var lengthOfLongestSubstring = function (s) {
           if (!skipToNext) {
             count = j - i + 1
             if (count > longCount) longCount = count
-
-            // console.log('counting', count, longCount)
           }
         }
       }
