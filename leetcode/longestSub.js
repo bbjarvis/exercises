@@ -24,7 +24,8 @@
 // 0 <= s.length <= 5 * 104
 // s consists of English letters, digits, symbols and spaces.
 
-let s = ['abcabcbb', 'bbbbb', 'pwwkew', '']
+let s = ['abcabcbb', 'bbbbb', 'pwwkew', '', 'cdd']
+let n = [3, 1, 3, 0, 2]
 
 var lengthOfLongestSubstring = function (s) {
   let count = 1
@@ -32,21 +33,33 @@ var lengthOfLongestSubstring = function (s) {
   if (s.length === 0) longCount = 0
   else {
     for (let i = 0; i < s.length; i++) {
+      let skipToNext = false
       for (let j = i + 1; j < s.length; j++) {
-        console.log(s[i], s[j])
+        if (skipToNext) break
+        // console.log(s[i], s[j])
         if (s[i] === s[j]) {
-          longCount = count
-          console.log('break', count, longCount)
+          if (count > longCount) longCount = count
+          // console.log('break', count, longCount)
           break
         } else {
-          count = j - i + 1
-          if (count > longCount) longCount = count
+          for (let index = j - 1; index > i; index--) {
+            // console.log('index', index, j, i)
+            if (s[index] === s[j]) {
+              skipToNext = true
+              break
+            }
+          }
+          if (!skipToNext) {
+            count = j - i + 1
+            if (count > longCount) longCount = count
 
-          console.log('counting', count, longCount)
+            // console.log('counting', count, longCount)
+          }
         }
       }
     }
   }
   return longCount
 }
-for (let x = 0; x < s.length; x++) console.log(lengthOfLongestSubstring(s[x]))
+for (let x = 0; x < s.length; x++)
+  console.log('answer', s[x], n[x], lengthOfLongestSubstring(s[x]))
