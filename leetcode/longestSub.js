@@ -36,15 +36,12 @@ var lengthOfLongestSubstring = function (s) {
         console.log(s[i], s[j])
         if (s[i] === s[j]) {
           longCount = count
-          // longCount = j - i + 1
           console.log('break', count, longCount)
           break
         } else {
           count = j - i + 1
           if (count > longCount) longCount = count
-          // else {
-          //   count = 1
-          // }
+
           console.log('counting', count, longCount)
         }
       }
