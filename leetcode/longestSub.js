@@ -32,21 +32,24 @@ var lengthOfLongestSubstring = function (s) {
   if (s.length === 0) longCount = 0
   else {
     for (let i = 0; i < s.length; i++) {
-      for (let j = 0; j < s.length; j++) {
-        console.log(s[i], s[j], count, longCount)
+      for (let j = i + 1; j < s.length; j++) {
+        console.log(s[i], s[j])
         if (s[i] === s[j]) {
-          count = 1
+          longCount = count
+          // longCount = j - i + 1
+          console.log('break', count, longCount)
           break
         } else {
-          count++
+          count = j - i + 1
           if (count > longCount) longCount = count
-          else {
-            count = 1
-          }
+          // else {
+          //   count = 1
+          // }
+          console.log('counting', count, longCount)
         }
       }
     }
   }
   return longCount
 }
-for (let i = 0; i < s.length; i++) console.log(lengthOfLongestSubstring(s[i]))
+for (let x = 0; x < s.length; x++) console.log(lengthOfLongestSubstring(s[x]))
