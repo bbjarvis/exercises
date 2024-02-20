@@ -30,8 +30,13 @@ let n = [3, 1, 3, 0, 2]
 var lengthOfLongestSubstring = function (s) {
   const set = new Set(s)
   const uniques = [...set]
+  if ([0, 1].includes(uniques.length)) {
+    count = uniques.length
+  } else {
+    count = 100
+  }
 
-  return uniques
+  return count
 
   // let count = 1
   // let longCount = 1
