@@ -24,49 +24,60 @@
 // 0 <= s.length <= 5 * 104
 // s consists of English letters, digits, symbols and spaces.
 
-let s = ['abcabcbb', 'bbbbb', 'pwwkew', '', 'cdd', 'abc']
-let n = [3, 1, 3, 0, 2, 3]
+let s = [
+  // 'abcabcbb', 'bbbbb', 'pwwkew', '', 'cdd', 'abc',
+  'aab',
+  // 'baa',
+]
+let n = [
+  // 3, 1, 3, 0, 2, 3, 2,
+  2,
+]
 
 var lengthOfLongestSubstring = function (s) {
   // const set = new Set(s)
   // const uniques = [...set]
   // if ([0, 1].includes(uniques.length) || uniques.length === s.length) {
-  //   longcount = uniques.length
+  //   longCount = uniques.length
   // } else {
   // count = uniques
-  longcount = 0
+  longCount = 0
   let sub = []
   let count = 0
-
+  // const sUpAndDown = [...s, ...[...s].reverse()]
+  // console.log(sUpAndDown)
   for (const i of s) {
     sub.push(i)
     subSet = [...new Set(sub)]
-    if (sub.length === subSet.length) {
-      count++
-    } else {
-      count = 0
-      sub = []
+
+    if (sub.length === 1) count = 1
+    else {
+      if (sub.length === subSet.length) {
+        count++
+      } else {
+        count = 1
+        sub = []
+      }
     }
-    if (count > longcount) longcount = count
-    // console.log(sub, subSet, count, longcount)
+    if (count > longCount) longCount = count
+    console.log(sub, subSet, count, longCount, sub.length, subSet.length)
   }
 
   // for (const i of uniques) {
-  //   for (const j of s) {
+  //   for (const j of S) {
   //     if (i === j) {
   //       count = 1
   //     } else count++
-  //     if (count > longcount) longcount = count
-  //     console.log(count, i, j, longcount)
+  //     if (count > longCount) longCount = count
+  //     console.log(count, i, j, longCount)
   //   }
   // }
   // }
-
-  return longcount
+  return longCount
 
   // let count = 1
   // let longCount = 1
-  // if (s.length === 0) longCount = 0
+  // if (S.length === 0) longCount = 0
   // else {
   //   for (let i = 0; i < s.length; i++) {
   //     let skipToNext = false
