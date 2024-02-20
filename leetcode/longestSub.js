@@ -24,19 +24,45 @@
 // 0 <= s.length <= 5 * 104
 // s consists of English letters, digits, symbols and spaces.
 
-let s = ['abcabcbb', 'bbbbb', 'pwwkew', '', 'cdd']
-let n = [3, 1, 3, 0, 2]
+let s = ['abcabcbb', 'bbbbb', 'pwwkew', '', 'cdd', 'abc']
+let n = [3, 1, 3, 0, 2, 3]
 
 var lengthOfLongestSubstring = function (s) {
-  const set = new Set(s)
-  const uniques = [...set]
-  if ([0, 1].includes(uniques.length)) {
-    count = uniques.length
-  } else {
-    count = 100
+  // const set = new Set(s)
+  // const uniques = [...set]
+  // if ([0, 1].includes(uniques.length) || uniques.length === s.length) {
+  //   longcount = uniques.length
+  // } else {
+  // count = uniques
+  longcount = 0
+  let sub = []
+  let count = 0
+
+  for (const i of s) {
+    sub.push(i)
+    subSet = [...new Set(sub)]
+    if (sub.length === subSet.length) {
+      count++
+    } else {
+      count = 0
+      sub = []
+    }
+    if (count > longcount) longcount = count
+    // console.log(sub, subSet, count, longcount)
   }
 
-  return count
+  // for (const i of uniques) {
+  //   for (const j of s) {
+  //     if (i === j) {
+  //       count = 1
+  //     } else count++
+  //     if (count > longcount) longcount = count
+  //     console.log(count, i, j, longcount)
+  //   }
+  // }
+  // }
+
+  return longcount
 
   // let count = 1
   // let longCount = 1
