@@ -24,28 +24,14 @@
 // 0 <= s.length <= 5 * 104
 // s consists of English letters, digits, symbols and spaces.
 
-let s = [
-  // 'abcabcbb', 'bbbbb', 'pwwkew', '', 'cdd', 'abc',
-  'aab',
-  // 'baa',
-]
-let n = [
-  // 3, 1, 3, 0, 2, 3, 2,
-  2,
-]
+let s = ['abcabcbb', 'bbbbb', 'pwwkew', '', 'cdd', 'abc', 'aab', 'baa']
+let n = [3, 1, 3, 0, 2, 3, 2, 2]
 
 var lengthOfLongestSubstring = function (s) {
-  // const set = new Set(s)
-  // const uniques = [...set]
-  // if ([0, 1].includes(uniques.length) || uniques.length === s.length) {
-  //   longCount = uniques.length
-  // } else {
-  // count = uniques
   longCount = 0
   let sub = []
   let count = 0
-  // const sUpAndDown = [...s, ...[...s].reverse()]
-  // console.log(sUpAndDown)
+
   for (const i of s) {
     sub.push(i)
     subSet = [...new Set(sub)]
@@ -56,52 +42,13 @@ var lengthOfLongestSubstring = function (s) {
         count++
       } else {
         count = 1
-        sub = []
+        sub = [i]
       }
     }
     if (count > longCount) longCount = count
-    console.log(sub, subSet, count, longCount, sub.length, subSet.length)
   }
 
-  // for (const i of uniques) {
-  //   for (const j of S) {
-  //     if (i === j) {
-  //       count = 1
-  //     } else count++
-  //     if (count > longCount) longCount = count
-  //     console.log(count, i, j, longCount)
-  //   }
-  // }
-  // }
   return longCount
-
-  // let count = 1
-  // let longCount = 1
-  // if (S.length === 0) longCount = 0
-  // else {
-  //   for (let i = 0; i < s.length; i++) {
-  //     let skipToNext = false
-  //     for (let j = i + 1; j < s.length; j++) {
-  //       if (skipToNext) break
-  //       if (s[i] === s[j]) {
-  //         if (count > longCount) longCount = count
-  //         break
-  //       } else {
-  //         for (let index = j - 1; index > i; index--) {
-  //           if (s[index] === s[j]) {
-  //             skipToNext = true
-  //             break
-  //           }
-  //         }
-  //         if (!skipToNext) {
-  //           count = j - i + 1
-  //           if (count > longCount) longCount = count
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-  // return longCount
 }
 for (let x = 0; x < s.length; x++)
   console.log('answer', s[x], n[x], lengthOfLongestSubstring(s[x]))
