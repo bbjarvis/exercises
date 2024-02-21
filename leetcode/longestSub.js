@@ -24,8 +24,8 @@
 // 0 <= s.length <= 5 * 104
 // s consists of English letters, digits, symbols and spaces.
 
-let s = ['abcabcbb', 'bbbbb', 'pwwkew', '', 'cdd', 'abc', 'aab', 'baa']
-let n = [3, 1, 3, 0, 2, 3, 2, 2]
+let s = ['abcabcbb', 'bbbbb', 'pwwkew', '', 'cdd', 'abc', 'aab', 'baa', 'dvdf']
+let n = [3, 1, 3, 0, 2, 3, 2, 2, 3]
 
 var lengthOfLongestSubstring = function (s) {
   longCount = 0
