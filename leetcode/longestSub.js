@@ -29,18 +29,14 @@ let n = [3, 1, 3, 0, 2, 3, 2, 2, 3]
 
 var lengthOfLongestSubstring = function (s) {
   let longCount = 0
-  let start = 0 // Define the starting index of the current substring
+  let start = 0
   const charMap = new Map()
 
   for (let i = 0; i < s.length; i++) {
-    // If the character is already in the map, update the start position
     if (charMap.has(s[i])) {
-      // Update start only if the repeated character's last index is greater than or equal to current start
       start = Math.max(start, charMap.get(s[i]) + 1)
     }
-    // Add or update the character's latest index
     charMap.set(s[i], i)
-    // Update the longest count based on the current substring length
     longCount = Math.max(longCount, i - start + 1)
   }
 
