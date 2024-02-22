@@ -25,7 +25,7 @@
 // s consists of English letters, digits, symbols and spaces.
 
 let s = ['abcabcbb', 'bbbbb', 'pwwkew', '', 'cdd', 'abc', 'aab', 'baa', 'dvdf']
-let n = [3, 1, 3, 0, 2, 3, 2, 2, 3]
+let n = [3, 1, 3, 0, 2, 3, 2, 2]
 
 var lengthOfLongestSubstring = function (s) {
   longCount = 0
@@ -36,15 +36,15 @@ var lengthOfLongestSubstring = function (s) {
     sub.push(i)
     subSet = [...new Set(sub)]
 
-    if (sub.length === 1) count = 1
-    else {
-      if (sub.length === subSet.length) {
-        count++
-      } else {
-        count = 1
-        sub = [i]
-      }
+    // if (sub.length === 1) count = 1
+    // else {
+    if (sub.length === subSet.length) {
+      count++
+    } else {
+      count = 1
+      sub = [i]
     }
+    // }
     if (count > longCount) longCount = count
   }
 
