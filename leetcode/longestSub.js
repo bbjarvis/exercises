@@ -25,30 +25,27 @@
 // s consists of English letters, digits, symbols and spaces.
 
 let s = ['abcabcbb', 'bbbbb', 'pwwkew', '', 'cdd', 'abc', 'aab', 'baa', 'dvdf']
-let n = [3, 1, 3, 0, 2, 3, 2, 2]
+let n = [3, 1, 3, 0, 2, 3, 2, 2, 3]
 
 var lengthOfLongestSubstring = function (s) {
-  longCount = 0
-  let sub = []
-  let count = 0
+  let longCount = 0
+  let start = 0 // Define the starting index of the current substring
+  const charMap = new Map()
 
-  for (const i of s) {
-    sub.push(i)
-    subSet = [...new Set(sub)]
-
-    // if (sub.length === 1) count = 1
-    // else {
-    if (sub.length === subSet.length) {
-      count++
-    } else {
-      count = 1
-      sub = [i]
+  for (let i = 0; i < s.length; i++) {
+    // If the character is already in the map, update the start position
+    if (charMap.has(s[i])) {
+      // Update start only if the repeated character's last index is greater than or equal to current start
+      start = Math.max(start, charMap.get(s[i]) + 1)
     }
-    // }
-    if (count > longCount) longCount = count
+    // Add or update the character's latest index
+    charMap.set(s[i], i)
+    // Update the longest count based on the current substring length
+    longCount = Math.max(longCount, i - start + 1)
   }
 
   return longCount
 }
+
 for (let x = 0; x < s.length; x++)
   console.log('answer', s[x], n[x], lengthOfLongestSubstring(s[x]))
