@@ -25,4 +25,4 @@ let n = ['bab', 'bb']
 var longestPalindrome = function (s) {}
 
 for (let x = 0; x < s.length; x++)
-  console.log('answer', s[x], n[x], lengthOfLongestSubstring(s[x]))
+  console.log('answer', s[x], n[x], longestPalindrome(s[x]))
