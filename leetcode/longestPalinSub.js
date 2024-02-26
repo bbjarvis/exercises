@@ -24,6 +24,8 @@ let n = ['bab', 'bb']
 
 var longestPalindrome = function (s) {
   let count = 0
+  let longcount = 0
+  let longPalin = ''
   let isPal = false
   const sArr = [...s]
   for (let i = 0; i < sArr.length; i++) {
@@ -38,14 +40,19 @@ var longestPalindrome = function (s) {
             isPal = true
           }
         }
-        if (isPal) {
-          count = j - i + 1
-          console.log(count, i, j)
+      }
+
+      if (isPal) {
+        count = j - i + 1
+        if (count > longcount) {
+          longcount = count
+          longPalin = sArr.slice(i, j).join('')
+          console.log(longPalin, i, j)
         }
       }
     }
   }
-  return count
+  return longPalin
 }
 
 for (let x = 0; x < s.length; x++)
