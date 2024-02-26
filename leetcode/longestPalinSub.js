@@ -22,7 +22,18 @@
 let s = ['babad', 'cbbd']
 let n = ['bab', 'bb']
 
-var longestPalindrome = function (s) {}
+var longestPalindrome = function (s) {
+  let count = 0
+  for (let i = 0; i < s.length; i++) {
+    for (let j = s.length; j > i; j--) {
+      if (s[i] === s[j]) {
+        count = j - i + 1
+        console.log(i, j, count)
+      }
+    }
+  }
+  return count
+}
 
 for (let x = 0; x < s.length; x++)
   console.log('answer', s[x], n[x], longestPalindrome(s[x]))
