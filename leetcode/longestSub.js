@@ -28,24 +28,18 @@ let s = ['abcabcbb', 'bbbbb', 'pwwkew', '', 'cdd', 'abc', 'aab', 'baa', 'dvdf']
 let n = [3, 1, 3, 0, 2, 3, 2, 2, 3]
 
 var lengthOfLongestSubstring = function (s) {
-  let len = s.length,
-    max = 0,
-    j = 1,
-    flag = false
-  if (len === 0) {
-    return 0
-  }
-  for (let i = 0; i < len || j < len; i++) {
-    while (true) {
-      if (j < len && !s.slice(i, j).includes(s[j])) {
-        j++
-      } else {
-        max = Math.max(max, j - i)
-        break
-      }
+  let start = 0
+  let longest = ''
+
+  for (let i = 0; i < s.length; i++) {
+    if (s.slice(start, i).includes(s[i])) {
+      start = s.indexOf(s[i], start) + 1
+    } else if (longest.length < s.slice(start, i + 1).length) {
+      longest = s.slice(start, i + 1)
     }
   }
-  return max
+
+  return longest.length
 }
 
 for (let x = 0; x < s.length; x++)
