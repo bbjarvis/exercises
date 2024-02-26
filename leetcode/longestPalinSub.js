@@ -23,14 +23,9 @@ let s = ['babad', 'cbbd']
 let n = ['bab', 'bb']
 
 var longestPalindrome = function (s) {
-  let count = 0
-  let longcount = 0
   let longPalin = ''
 
   if (s.length < 1) return ''
-
-  let start = 0,
-    end = 0
 
   const checkPalin = (left, right) => {
     for (
