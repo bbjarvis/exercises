@@ -26,32 +26,30 @@ var longestPalindrome = function (s) {
   let count = 0
   let longcount = 0
   let longPalin = ''
-  let isPal = false
-  const sArr = [...s]
-  for (let i = 0; i < sArr.length; i++) {
-    for (let j = sArr.length; j > i; j--) {
-      if (sArr[i] === sArr[j]) {
-        sRev = [...sArr].reverse()
-        for (let index = i; index <= j; index++) {
-          if (sArr[index] !== sRev[index]) {
-            isPal = false
-            break
-          } else {
-            isPal = true
-          }
-        }
-      }
 
-      if (isPal) {
-        count = j - i + 1
-        if (count > longcount) {
-          longcount = count
-          longPalin = sArr.slice(i, j).join('')
-          console.log(longPalin, i, j)
-        }
-      }
+  if (s.length < 1) return ''
+
+  let start = 0,
+    end = 0
+
+  const checkPalin = (left, right) => {
+    for (
+      ;
+      left >= 0 && right < s.length && s[left] === s[right];
+      left--, right++
+    ) {}
+    left++
+    right--
+    if (right - left + 1 > longPalin.length) {
+      longPalin = s.substring(left, right + 1)
     }
   }
+
+  for (let i = 0; i < s.length; i++) {
+    checkPalin(i, i)
+    checkPalin(i, i + 1)
+  }
+
   return longPalin
 }
 
