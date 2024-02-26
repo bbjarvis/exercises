@@ -24,11 +24,24 @@ let n = ['bab', 'bb']
 
 var longestPalindrome = function (s) {
   let count = 0
-  for (let i = 0; i < s.length; i++) {
-    for (let j = s.length; j > i; j--) {
-      if (s[i] === s[j]) {
-        count = j - i + 1
-        console.log(i, j, count)
+  let isPal = false
+  const sArr = [...s]
+  for (let i = 0; i < sArr.length; i++) {
+    for (let j = sArr.length; j > i; j--) {
+      if (sArr[i] === sArr[j]) {
+        sRev = [...sArr].reverse()
+        for (let index = i; index <= j; index++) {
+          if (sArr[index] !== sRev[index]) {
+            isPal = false
+            break
+          } else {
+            isPal = true
+          }
+        }
+        if (isPal) {
+          count = j - i + 1
+          console.log(count, i, j)
+        }
       }
     }
   }
