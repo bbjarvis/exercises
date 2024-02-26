@@ -32,7 +32,8 @@ var lengthOfLongestSubstring = function (s) {
   let longest = ''
 
   for (let i = 0; i < s.length; i++) {
-    if (s.slice(start, i).includes(s[i])) {
+    const sub = s.slice(start, i)
+    if (sub.includes(s[i])) {
       start = s.indexOf(s[i], start) + 1
     } else if (longest.length < s.slice(start, i + 1).length) {
       longest = s.slice(start, i + 1)
