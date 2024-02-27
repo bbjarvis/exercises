@@ -42,7 +42,13 @@ let s = ['PAYPALISHIRING', 'PAYPALISHIRING', 'A']
 let numRows = [3, 4, 1]
 let out = ['PAHNAPLSIIGYIR', 'PINALSIGYAHRPI']
 
-var convert = function (s, numRows) {}
+var convert = function (s, numRows) {
+  let zigZag = {}
+  for (let i = 0; i < numRows; i++) {
+    zigZag[i] = []
+  }
+  return zigZag
+}
 
 for (let x = 0; x < s.length; x++)
   console.log('answer', s[x], numRows[x], out[x], convert(s[x]))
