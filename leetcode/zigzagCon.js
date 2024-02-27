@@ -32,3 +32,17 @@
 // 1 <= s.length <= 1000
 // s consists of English letters (lower-case and upper-case), ',' and '.'.
 // 1 <= numRows <= 1000
+
+/*
+ @param {string} s
+ @param {number} numRows
+ @return {string}
+ */
+let s = ['PAYPALISHIRING', 'PAYPALISHIRING', 'A']
+let numRows = [3, 4, 1]
+let out = ['PAHNAPLSIIGYIR', 'PINALSIGYAHRPI']
+
+var convert = function (s, numRows) {}
+
+for (let x = 0; x < s.length; x++)
+  console.log('answer', s[x], numRows[x], convert(s[x]))
