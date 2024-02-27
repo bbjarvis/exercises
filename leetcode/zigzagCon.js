@@ -47,20 +47,25 @@ var convert = function (s, numRows) {
   let zigZag = Object.fromEntries(
     Array.from({ length: numRows }, (_, index) => [index, []])
   )
+  let zigZagStr = ''
   for (let index = 0; index < s.length; ) {
     for (let i = 0; i < numRows; i++) {
-      if (s[index]) zigZag[i].push(s[index])
-      // console.log(index, i, zigZag[i])
+      if (s[index]) {
+        zigZag[i].push(s[index])
+      }
       index++
     }
     for (let j = numRows - 2; j > 0; j--) {
-      if (s[index]) zigZag[j].push(s[index])
-      // console.log(index, j, zigZag[j])
+      if (s[index]) {
+        zigZag[j].push(s[index])
+      }
       index++
     }
   }
-
-  return zigZag
+  for (let index = 0; index < Object.keys(zigZag).length; index++) {
+    zigZagStr += zigZag[index].join('')
+  }
+  return zigZagStr
 }
 
 for (let x = 0; x < s.length; x++)
