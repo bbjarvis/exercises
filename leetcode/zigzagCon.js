@@ -40,15 +40,28 @@
  */
 let s = ['PAYPALISHIRING', 'PAYPALISHIRING', 'A']
 let numRows = [3, 4, 1]
-let out = ['PAHNAPLSIIGYIR', 'PINALSIGYAHRPI']
+let out = ['PAHNAPLSIIGYIR', 'PINALSIGYAHRPI', 'A']
 
 var convert = function (s, numRows) {
-  let zigZag = {}
-  for (let i = 0; i < numRows; i++) {
-    zigZag[i] = []
+  if (numRows === 1) return s
+  let zigZag = Object.fromEntries(
+    Array.from({ length: numRows }, (_, index) => [index, []])
+  )
+  for (let index = 0; index < s.length; ) {
+    for (let i = 0; i < numRows; i++) {
+      if (s[index]) zigZag[i].push(s[index])
+      // console.log(index, i, zigZag[i])
+      index++
+    }
+    for (let j = numRows - 2; j > 0; j--) {
+      if (s[index]) zigZag[j].push(s[index])
+      // console.log(index, j, zigZag[j])
+      index++
+    }
   }
+
   return zigZag
 }
 
 for (let x = 0; x < s.length; x++)
-  console.log('answer', s[x], numRows[x], out[x], convert(s[x]))
+  console.log('answer', s[x], numRows[x], out[x], convert(s[x], numRows[x]))
