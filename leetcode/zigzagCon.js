@@ -45,4 +45,4 @@ let out = ['PAHNAPLSIIGYIR', 'PINALSIGYAHRPI']
 var convert = function (s, numRows) {}
 
 for (let x = 0; x < s.length; x++)
-  console.log('answer', s[x], numRows[x], convert(s[x]))
+  console.log('answer', s[x], numRows[x], out[x], convert(s[x]))
