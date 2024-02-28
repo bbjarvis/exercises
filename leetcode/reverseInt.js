@@ -32,18 +32,27 @@ let x = [123, -123, 120, 2147483647]
 let out = [321, -321, 21, 0]
 
 var reverse = function (x) {
-  let isNeg = false
-  let xToS = x.toString()
-  if (xToS[0] === '-') {
-    isNeg = true
-    xToS = xToS.substring(1)
-  }
-  let xToRev = xToS.split('').reverse().join('')
-  if (isNeg) xToRev = '-' + xToRev
-  if (xToRev[0] === '0') xToRev = xToRev.substring(1)
-  if (xToRev < -2147483648 || xToRev > 2147483647) xToRev = 0
+  let rev = 0
+  while (x !== 0) {
+    let pop = x % 10
+    x = Math.trunc(x / 10)
 
-  return xToRev
+    if (
+      rev > Math.trunc(2147483647 / 10) ||
+      (rev === Math.trunc(2147483647 / 10) && pop > 7)
+    ) {
+      return 0
+    }
+    if (
+      rev < Math.trunc(-2147483648 / 10) ||
+      (rev === Math.trunc(-2147483648 / 10) && pop < -8)
+    ) {
+      return 0
+    }
+    rev = rev * 10 + pop
+  }
+
+  return rev
 }
 
 for (let i = 0; i < x.length; i++)
