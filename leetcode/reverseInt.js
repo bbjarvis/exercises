@@ -22,3 +22,24 @@
 // Constraints:
 
 // -231 <= x <= 231 - 1
+
+/*
+ * @param {number} x
+ * @return {number}
+ */
+
+let x = [123, -123, 120]
+let out = [321, -321, 21]
+
+var reverse = function (x) {
+  let isNeg = false
+  let xToS = x.toString()
+
+  let xToRev = xToS.split('').reverse().join('')
+  if (isNeg) xToRev = '-' + xToRev
+
+  return xToRev
+}
+
+for (let i = 0; i < x.length; i++)
+  console.log('answer', x[i], out[i], reverse(x[i]))
