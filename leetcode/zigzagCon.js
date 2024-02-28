@@ -59,7 +59,6 @@ var convert = function (s, numRows) {
   }
 
   return zigZagArr.join('')
-  // return zigZagArr
 }
 
 for (let x = 0; x < s.length; x++)
