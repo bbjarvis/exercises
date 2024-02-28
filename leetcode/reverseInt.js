@@ -34,7 +34,10 @@ let out = [321, -321, 21]
 var reverse = function (x) {
   let isNeg = false
   let xToS = x.toString()
-
+  if (xToS[0] === '-') {
+    isNeg = true
+    xToS = xToS.substring(1)
+  }
   let xToRev = xToS.split('').reverse().join('')
   if (isNeg) xToRev = '-' + xToRev
 
