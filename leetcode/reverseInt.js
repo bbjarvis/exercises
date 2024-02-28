@@ -40,6 +40,7 @@ var reverse = function (x) {
   }
   let xToRev = xToS.split('').reverse().join('')
   if (isNeg) xToRev = '-' + xToRev
+  if (xToRev[0] === '0') xToRev = xToRev.substring(1)
 
   return xToRev
 }
