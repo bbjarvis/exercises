@@ -28,8 +28,8 @@
  * @return {number}
  */
 
-let x = [123, -123, 120]
-let out = [321, -321, 21]
+let x = [123, -123, 120, 2147483647]
+let out = [321, -321, 21, 0]
 
 var reverse = function (x) {
   let isNeg = false
@@ -41,6 +41,7 @@ var reverse = function (x) {
   let xToRev = xToS.split('').reverse().join('')
   if (isNeg) xToRev = '-' + xToRev
   if (xToRev[0] === '0') xToRev = xToRev.substring(1)
+  if (xToRev < -2147483648 || xToRev > 2147483647) xToRev = 0
 
   return xToRev
 }
