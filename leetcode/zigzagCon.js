@@ -44,28 +44,22 @@ let out = ['PAHNAPLSIIGYIR', 'PINALSIGYAHRPI', 'A']
 
 var convert = function (s, numRows) {
   if (numRows === 1) return s
-  let zigZag = Object.fromEntries(
-    Array.from({ length: numRows }, (_, index) => [index, []])
-  )
-  let zigZagStr = ''
-  for (let index = 0; index < s.length; ) {
-    for (let i = 0; i < numRows; i++) {
-      if (s[index]) {
-        zigZag[i].push(s[index])
-      }
-      index++
-    }
-    for (let j = numRows - 2; j > 0; j--) {
-      if (s[index]) {
-        zigZag[j].push(s[index])
-      }
-      index++
-    }
+  let zigZagArr = Array.from({ length: numRows }, () => '')
+  let currentRow = 0
+  let down = true
+
+  for (let i = 0; i < s.length; i++) {
+    zigZagArr[currentRow] += s[i]
+
+    if (currentRow === numRows - 1) down = false
+    if (currentRow === 0) down = true
+
+    if (down) currentRow++
+    if (!down) currentRow--
   }
-  for (let index = 0; index < Object.keys(zigZag).length; index++) {
-    zigZagStr += zigZag[index].join('')
-  }
-  return zigZagStr
+
+  return zigZagArr.join('')
+  // return zigZagArr
 }
 
 for (let x = 0; x < s.length; x++)
