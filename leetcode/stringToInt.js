@@ -25,15 +25,21 @@ let out = [42, -42, 4193]
 
 var myAtoi = function (s) {
   let isNeg = false
-  let firstChar = ''
+  let firstChar = null
+  let lastChar = null
   let sTrim = ''
-  for (let i = 0; i < s.length && !firstChar; i++) {
-    if (s[i] !== '') {
-      firstChar = s[i]
-      if (firstChar === '-') isNeg = true
-      sTrim = s.trim(i + 1, s.length)
+  for (let i = 0; i < s.length && lastChar === null; i++) {
+    if (s[i] === '-') isNeg = true
+    if (firstChar !== null && lastChar === null) {
+      if (!/^\d$/.test(s[i + 1])) lastChar = i + 1
+    }
+    if (firstChar === null) {
+      if (/^\d$/.test(s[i])) firstChar = i
     }
   }
+  console.log(firstChar, lastChar)
+
+  sTrim = s.slice(firstChar, lastChar)
 
   return sTrim
 }
