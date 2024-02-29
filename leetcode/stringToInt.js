@@ -24,12 +24,12 @@ let s = ['42', '   -42', '4193 with words']
 let out = [42, -42, 4193]
 
 var myAtoi = function (s) {
-  let isNeg = false
+  let isNeg = 1
   let firstChar = null
   let lastChar = null
   let sTrim = ''
   for (let i = 0; i < s.length && lastChar === null; i++) {
-    if (s[i] === '-') isNeg = true
+    if (s[i] === '-') isNeg = -1
     if (firstChar !== null && lastChar === null) {
       if (!/^\d$/.test(s[i + 1])) lastChar = i + 1
     }
@@ -40,8 +40,10 @@ var myAtoi = function (s) {
   console.log(firstChar, lastChar)
 
   sTrim = s.slice(firstChar, lastChar)
+  let num = parseInt(sTrim, 10)
+  num = num * isNeg
 
-  return sTrim
+  return num
 }
 
 for (let i = 0; i < s.length; i++)
