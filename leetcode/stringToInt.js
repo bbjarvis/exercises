@@ -23,7 +23,20 @@
 let s = ['42', '   -42', '4193 with words']
 let out = [42, -42, 4193]
 
-var myAtoi = function (s) {}
+var myAtoi = function (s) {
+  let isNeg = false
+  let firstChar = ''
+  let sTrim = ''
+  for (let i = 0; i < s.length && !firstChar; i++) {
+    if (s[i] !== '') {
+      firstChar = s[i]
+      if (firstChar === '-') isNeg = true
+      sTrim = s.trim(i + 1, s.length)
+    }
+  }
+
+  return sTrim
+}
 
 for (let i = 0; i < s.length; i++)
   console.log('answer', s[i], out[i], myAtoi(s[i]))
