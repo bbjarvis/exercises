@@ -14,3 +14,16 @@
 
 // Only the space character ' ' is considered a whitespace character.
 // Do not ignore any characters other than the leading whitespace or the rest of the string after the digits.
+
+/*
+ * @param {string} s
+ * @return {number}
+ */
+
+let s = ['42', '   -42', '4193 with words']
+let out = [42, -42, 4193]
+
+var myAtoi = function (s) {}
+
+for (let i = 0; i < s.length; i++)
+  console.log('answer', s[i], out[i], myAtoi(s[i]))
