@@ -29,56 +29,36 @@ let s = [
   '',
   ' ',
   '1',
+  '  +  413',
 ]
-let out = [42, -42, 4193, 0, 0, 0, 0, 1]
+let out = [42, -42, 4193, 0, 0, 0, 0, 1, 0]
 
 var myAtoi = function (s) {
   let isNeg = 1
-  let firstChar = null
-  let lastChar = null
-  let sTrim = ''
   let num = 0
+  let foundDigit = false // Added: Flag to track if a digit has been found.
 
-  for (let i = 0; i < s.length && lastChar === null; i++) {
-    if (/^[+-]/.test(s[i])) {
-      if (/^[+-]/.test(s[i + 1])) {
-        isNeg = 0
-        break
-      }
+  for (let i = 0; i < s.length; i++) {
+    if (!foundDigit && /^[+-]$/.test(s[i])) {
+      // Changed: Ensure signs are considered only before digits.
+      if (!/^\d$/.test(s[i + 1])) break // Invalid sequence of '+' or '-', exit.
       if (s[i] === '-') isNeg = -1
+      continue // Skip to next iteration after processing sign.
     }
-    if (firstChar !== null && lastChar === null) {
-      if (!/^\d$/.test(s[i + 1])) lastChar = i + 1
+    if (/^\d$/.test(s[i])) {
+      foundDigit = true // Set flag when first digit is found.
+      num = num * 10 + parseInt(s[i], 10) // Accumulate the number.
+    } else if (foundDigit) {
+      break // Exit loop if non-digit is found after a digit.
+    } else if (!foundDigit && s[i].trim() === '') {
+      continue // Ignore leading whitespace before finding digits.
+    } else {
+      return 0 // Return 0 if non-digit/non-whitespace is found before any digit.
     }
-    if (firstChar === null) {
-      if (/^[A-Za-z\.]$/.test(s[i])) {
-        isNeg = 0
-        break
-      }
+  }
 
-      if (/^\d$/.test(s[i])) firstChar = i
-    }
-  }
-  if (isNeg !== 0 && !isNaN(num)) {
-    sTrim = s.slice(firstChar, lastChar)
-    num = parseInt(sTrim, 10)
-  }
-  if (isNaN(num)) {
-    num = 0
-  }
-  num = num * isNeg
-  if (
-    num > Math.trunc(2147483647 / 10) ||
-    (num === Math.trunc(2147483647 / 10) && pop > 7)
-  ) {
-    num = 2147483647
-  }
-  if (
-    num < Math.trunc(-2147483648 / 10) ||
-    (num === Math.trunc(-2147483648 / 10) && pop < -8)
-  ) {
-    num = -2147483648
-  }
+  num *= isNeg // Apply negativity if applicable.
+  num = Math.max(Math.min(num, 2147483647), -2147483648) // Clamp the result within the 32-bit signed integer range.
 
   return num
 }
