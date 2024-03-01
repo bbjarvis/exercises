@@ -36,7 +36,7 @@ var myAtoi = function (s) {
       if (!/^\d$/.test(s[i + 1])) lastChar = i + 1
     }
     if (firstChar === null) {
-      if (/^[A-Za-z]$/.test(s[i])) {
+      if (/^[A-Za-z\.]$/.test(s[i])) {
         isNeg = 0
         break
       }
@@ -50,6 +50,18 @@ var myAtoi = function (s) {
     num = parseInt(sTrim, 10)
   }
   num = num * isNeg
+  if (
+    num > Math.trunc(2147483647 / 10) ||
+    (num === Math.trunc(2147483647 / 10) && pop > 7)
+  ) {
+    num = 2147483647
+  }
+  if (
+    num < Math.trunc(-2147483648 / 10) ||
+    (num === Math.trunc(-2147483648 / 10) && pop < -8)
+  ) {
+    num = -2147483648
+  }
 
   return num
 }
