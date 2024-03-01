@@ -32,7 +32,7 @@ var myAtoi = function (s) {
 
   for (let i = 0; i < s.length && lastChar === null; i++) {
     if (/^[+-]/.test(s[i])) {
-      if (/^[+-]/.test(s[i])) {
+      if (/^[+-]/.test(s[i + 1])) {
         isNeg = 0
         break
       }
