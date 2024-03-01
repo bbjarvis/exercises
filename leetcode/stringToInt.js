@@ -20,8 +20,8 @@
  * @return {number}
  */
 
-let s = ['42', '   -42', '4193 with words', 'words and 987', '+-12']
-let out = [42, -42, 4193, 0, 0]
+let s = ['42', '   -42', '4193 with words', 'words and 987', '+-12', '']
+let out = [42, -42, 4193, 0, 0, 0]
 
 var myAtoi = function (s) {
   let isNeg = 1
@@ -51,7 +51,7 @@ var myAtoi = function (s) {
     }
   }
   console.log(firstChar, lastChar)
-  if (isNeg !== 0) {
+  if (isNeg !== 0 && s.length !== 0) {
     sTrim = s.slice(firstChar, lastChar)
     num = parseInt(sTrim, 10)
   }
