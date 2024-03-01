@@ -20,8 +20,8 @@
  * @return {number}
  */
 
-let s = ['42', '   -42', '4193 with words', 'words and 987']
-let out = [42, -42, 4193, 0]
+let s = ['42', '   -42', '4193 with words', 'words and 987', '+-12']
+let out = [42, -42, 4193, 0, 0]
 
 var myAtoi = function (s) {
   let isNeg = 1
@@ -31,7 +31,13 @@ var myAtoi = function (s) {
   let num = 0
 
   for (let i = 0; i < s.length && lastChar === null; i++) {
-    if (s[i] === '-') isNeg = -1
+    if (/^[+-]/.test(s[i])) {
+      if (/^[+-]/.test(s[i])) {
+        isNeg = 0
+        break
+      }
+      if (s[i] === '-') isNeg = -1
+    }
     if (firstChar !== null && lastChar === null) {
       if (!/^\d$/.test(s[i + 1])) lastChar = i + 1
     }
