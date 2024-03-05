@@ -21,3 +21,10 @@
 // Constraints:
 
 // -231 <= x <= 231 - 1
+
+/*
+ * @param {number} x
+ * @return {boolean}
+ */
+
+var isPalindrome = function (x) {}
