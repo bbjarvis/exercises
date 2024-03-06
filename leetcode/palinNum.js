@@ -27,4 +27,11 @@
  * @return {boolean}
  */
 
+let s = [121, -121, 10]
+
+let out = [true, false, false]
+
+for (let x = 0; x < s.length; x++)
+  console.log('answer', s[x], out[x], convert(s[x]))
+
 var isPalindrome = function (x) {}
