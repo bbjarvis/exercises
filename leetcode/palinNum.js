@@ -27,11 +27,24 @@
  * @return {boolean}
  */
 
-var isPalindrome = function (x) {}
+var isPalindrome = function (x) {
+  let arr = 0
+  // console.log(x)
+  if (x < 0) return false
+  let xLength = x === 0 ? 1 : Math.floor(Math.log10(Math.abs(x))) + 1
+  // console.log(x)
 
-let s = [121, -121, 10]
+  for (let i = 0; i < xLength; i++) {
+    arr += x % 10
+    x -= x % 10
+    x /= 10
+    console.log(x)
+    console.log(arr)
+  }
+  return arr
+}
+let s = [212, 121, -121, 10]
 
-let out = [true, false, false]
-
+let out = [true, true, false, false]
 for (let x = 0; x < s.length; x++)
-  console.log('answer', s[x], out[x], convert(s[x]))
+  console.log('answer', s[x], out[x], isPalindrome(s[x]))
