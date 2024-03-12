@@ -31,18 +31,19 @@ var isPalindrome = function (x) {
   let pal = 0
   if (x === 0) return true
   if (x < 0 || x % 10 === 0) return false
-  let xLength = x === 0 ? 1 : Math.floor(Math.log10(Math.abs(x))) + 1
-  let xMod = x
+  let rev = 0,
+    original = x
 
-  for (let i = 0; i < xLength; i++) {
-    pal += (xMod % 10) * 10 ** i
-    xMod -= xMod % 10
-    xMod /= 10
+  for (; x > 0; x = Math.floor(x / 10)) {
+    rev = rev * 10 + (x % 10)
   }
-  return pal === x ? true : false
+  return rev === original
 }
+
 let s = [212, 121, -121, 10, 123]
 
 let out = [true, true, false, false, false]
 for (let x = 0; x < s.length; x++)
-  console.log('answer', s[x], out[x], isPalindrome(s[x]))
+  out[x] === isPalindrome(s[x])
+    ? ''
+    : console.log('answer', s[x], out[x], isPalindrome(s[x]))
