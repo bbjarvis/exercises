@@ -37,7 +37,7 @@ var isPalindrome = function (x) {
   for (let i = 0; i < xLength; i++) {
     console.log(x % 10)
 
-    arr += (x % 10) * (10 * (xLength - i))
+    arr += (x % 10) * (10 * i)
     x -= x % 10
     x /= 10
     console.log(x)
