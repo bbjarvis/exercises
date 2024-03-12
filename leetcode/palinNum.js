@@ -28,22 +28,18 @@
  */
 
 var isPalindrome = function (x) {
-  let arr = 0
-  // console.log(x)
-  if (x < 0) return false
+  let pal = 0
+  if (x === 0) return true
+  if (x < 0 || x % 10 === 0) return false
   let xLength = x === 0 ? 1 : Math.floor(Math.log10(Math.abs(x))) + 1
-  // console.log(x)
+  let xMod = x
 
   for (let i = 0; i < xLength; i++) {
-    console.log(x % 10)
-
-    arr += (x % 10) * (10 * i)
-    x -= x % 10
-    x /= 10
-    console.log(x)
-    console.log(arr)
+    pal += (xMod % 10) * 10 ** i
+    xMod -= xMod % 10
+    xMod /= 10
   }
-  return arr === x ? ture : false
+  return pal === x ? true : false
 }
 let s = [212, 121, -121, 10]
 
