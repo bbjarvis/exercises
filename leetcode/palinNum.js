@@ -41,8 +41,8 @@ var isPalindrome = function (x) {
   }
   return pal === x ? true : false
 }
-let s = [212, 121, -121, 10]
+let s = [212, 121, -121, 10, 123]
 
-let out = [true, true, false, false]
+let out = [true, true, false, false, false]
 for (let x = 0; x < s.length; x++)
   console.log('answer', s[x], out[x], isPalindrome(s[x]))
