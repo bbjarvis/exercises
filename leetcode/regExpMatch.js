@@ -38,8 +38,9 @@
 
 var isMatch = function (s, p) {
   let isAny = p.includes('.')
+  let isZeroOrMore = p.includes('*')
 
-  return isAny
+  return isAny && isZeroOrMore
 }
 
 let s = ['aa', 'aa', 'ab']
