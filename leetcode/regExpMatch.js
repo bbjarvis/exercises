@@ -38,9 +38,7 @@
 
 var isMatch = function (s, p) {
   let isAny = p.includes('.')
-  // if (p !== undefined && p.includes('.')) {
-  //   isAny = true
-  // }
+
   return isAny
 }
 
