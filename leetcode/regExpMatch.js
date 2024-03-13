@@ -37,3 +37,12 @@
  */
 
 var isMatch = function (s, p) {}
+
+let s = ['aa', 'aa', 'ab']
+let p = ['a', 'a*', '.*']
+
+let out = [false, true, true]
+for (let x = 0; x < s.length; x++)
+  out[x] === isMatch(s[x])
+    ? ''
+    : console.log('answer', s[x], out[x], isMatch(s[x], p[x]))
