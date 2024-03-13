@@ -36,13 +36,19 @@
  * @return {boolean}
  */
 
-var isMatch = function (s, p) {}
+var isMatch = function (s, p) {
+  let isAny = p.includes('.')
+  // if (p !== undefined && p.includes('.')) {
+  //   isAny = true
+  // }
+  return isAny
+}
 
 let s = ['aa', 'aa', 'ab']
 let p = ['a', 'a*', '.*']
 
 let out = [false, true, true]
 for (let x = 0; x < s.length; x++)
-  out[x] === isMatch(s[x])
+  out[x] === isMatch(s[x], p[x])
     ? ''
     : console.log('answer', s[x], out[x], isMatch(s[x], p[x]))
