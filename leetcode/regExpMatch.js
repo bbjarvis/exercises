@@ -39,14 +39,24 @@
 var isMatch = function (s, p) {
   let isAny = p.includes('.')
   let isZeroOrMore = p.includes('*')
+  let isTrueMatch = !isZeroOrMore && !isAny ? (p === s ? true : false) : null
+  if (isTrueMatch) return isTrueMatch
 
-  return isAny && isZeroOrMore
+  let regex = new RegExp('\\.\\*', 'g')
+
+  let testResult = regex.test(p)
+
+  console.log(testResult) // Outputs: [4, 7]
+
+  // for (let i = 0; i < s.length; i++) {}
+
+  return isTrueMatch
 }
 
-let s = ['aa', 'aa', 'ab']
-let p = ['a', 'a*', '.*']
+let s = ['aa', 'aa', 'ab', 'aa']
+let p = ['a', 'a*', '.*', 'aa']
 
-let out = [false, true, true]
+let out = [false, true, true, true]
 for (let x = 0; x < s.length; x++)
   out[x] === isMatch(s[x], p[x])
     ? ''
