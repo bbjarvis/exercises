@@ -42,13 +42,22 @@ var isMatch = function (s, p) {
   let isTrueMatch = !isZeroOrMore && !isAny ? (p === s ? true : false) : null
   if (isTrueMatch) return isTrueMatch
 
-  let regex = new RegExp('\\.\\*', 'g')
-
-  let testResult = regex.test(p)
-
-  console.log(testResult) // Outputs: [4, 7]
-
-  // for (let i = 0; i < s.length; i++) {}
+  for (let i = 0; i < p.length && j < s.length; i++) {
+    if (p[i] === '.') {
+      // handle single char match,  advance j
+    } else if (p[i] === '*' && i > 0) {
+      // handle "*" by checking repitition of p[i-1] in 's', might need to adjust "j" carefully
+      for (;;) /*condition*/ {
+        // adjust "j" as per match/no match
+      }
+      // possibly adjust "i" if pattern segment is fully matched
+    } else {
+      // direct char compare
+      if (p[i] !== s[j]) return false // mismatch found
+      else j++ // advance "j" on match
+    }
+    // aditional logic for end of string
+  }
 
   return isTrueMatch
 }
